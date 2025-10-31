@@ -51,7 +51,7 @@ char	*clean_stash(char *stash)
 char	*ft_read(int fd, char *stash)
 {
 	char	*buffer;
-	size_t	bytes;
+	int		bytes;
 	char	*tmp;
 
 	buffer = malloc(BUFFER_SIZE + 1);
@@ -89,20 +89,13 @@ char	*get_next_line(int fd)
 	stash = clean_stash(stash);
 	return (line);
 }
-
 int	main(void)
 {
 	int	fd;
-	char	*line;
-
 	fd = open("text.txt", O_RDONLY);
 	if (fd < 0)
 		return (0);
-	while ((line = get_next_line(fd)))
-	{
-		printf("%s", line);
-		free(line);
-	}
+	printf("%s", get_next_line(fd));
 	close(fd);
 	return (0);
 }
