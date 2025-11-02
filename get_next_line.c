@@ -45,6 +45,11 @@ char	*clean_stash(char *stash)
 	}
 	new = ft_strdup(stash + i + 1);
 	free(stash);
+	if (!new || new[0] == '\0')
+	{
+		free(new);
+		return (NULL);
+	}
 	return (new);
 }
 
